@@ -167,6 +167,6 @@ Contributions are welcome! Please follow the Contributing Guidelines for this pr
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the GPL-3.0 License - see the LICENSE file for details.
 
 Copyright 2023, Max Base
