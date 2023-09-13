@@ -1,19 +1,33 @@
+import * as tf from "@tensorflow/tfjs";
+import "@tensorflow/tfjs-node-gpu";
+const canvas = require('canvas');
 import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import fs from 'fs';
 import path from 'path';
-import * as faceApi from 'face-api.js';
 import multer from 'multer';
+import * as faceapi from 'face-api.js';
+
+
+const minConfidence = 0.5;
+const faceDetectionOptions = new faceapi.SsdMobilenetv1Options({
+  minConfidence
+});
+
+
+const { Canvas , Image , ImageData } = canvas;
+faceapi.env.monkeyPatch({Canvas , Image , ImageData})
+
 
 const app = express();
 const port = process.env.PORT || 3001;
 
 
 (async()=>{
-  await faceApi.nets.tinyFaceDetector.loadFromDisk(path.join(__dirname , '../models'));
-  await faceApi.nets.faceLandmark68TinyNet.loadFromDisk(path.join(__dirname , '../models'));
-  await faceApi.nets.faceRecognitionNet.loadFromDisk(path.join(__dirname , '../models'));
+  await faceapi.nets.tinyFaceDetector.loadFromDisk(path.join(__dirname , '../models'));
+  await faceapi.nets.faceLandmark68TinyNet.loadFromDisk(path.join(__dirname , '../models'));
+  await faceapi.nets.faceRecognitionNet.loadFromDisk(path.join(__dirname , '../models'));
+  await faceapi.nets.ssdMobilenetv1.loadFromDisk(path.join(__dirname , '../models'));
 })()
 
 
@@ -26,8 +40,8 @@ const storage = multer.diskStorage({
     cb(null, newFileName);
   },
 });
-multer.memoryStorage()
-const upload = multer({ storage: storage , });
+
+const upload = multer({ storage: storage});
 
 app.use(express.static('public'))
 app.use(express.urlencoded({extended : true}))
@@ -35,32 +49,21 @@ app.use(morgan('tiny'))
 app.use(helmet())
 
 
+app.post('/detect', upload.single('image'), async (req, res) => {
+  const file = req.file.path
 
-app.post('/detect-emotion', upload.single('image'), async (req, res) => {
-    try {
-      const filePath = req.file.filename;    
-      const image = await loadImage('http://localhost:3001/'+filePath);
+  const image = await canvas.loadImage(file)
+  
+  try {
+    const detections = await faceapi.detectAllFaces(image, faceDetectionOptions)
 
-      // Detect faces in the image
-      const detections = await faceApi.detectAllFaces(image).withFaceExpressions();
   
-      const emotions = detections.map(detection => {
-        const { expressions } = detection;
-        const sortedEmotions = Object.keys(expressions).sort((a, b) => expressions[b] - expressions[a]);
-        const dominantEmotion = sortedEmotions[0];
-  
-        return {
-          emotion: dominantEmotion,
-        };
-      });
-  
-      // Send the emotion detection results back to the client
-      res.json({ success: true, emotions });
-    } catch (error) {
-      console.error(error);
-      res.json({ success: false, error: 'Emotion detection failed.' });
-    }
-  });
+
+    res.send(detections)
+  } catch (error) {
+    res.send(error)
+  }
+});
   
 
 app.listen(port , ()=>{
