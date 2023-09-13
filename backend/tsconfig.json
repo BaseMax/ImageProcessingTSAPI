@@ -10,5 +10,6 @@
     "experimentalDecorators": true ,
     "useDefineForClassFields": false , 
     "strictPropertyInitialization": false,
+    "skipLibCheck": true,
   }
 }
