@@ -1,3 +1,4 @@
+import '@tensorflow/tfjs-node'
 const canvas = require('canvas');
 import express from 'express';
 import morgan from 'morgan';
