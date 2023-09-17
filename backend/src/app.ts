@@ -18,19 +18,17 @@ const io = new Server(server , {cors : {
 
 
 
-io.on('connection' , (socket)=>{
-  console.log('a user conncted')
-  socket.on('disconnected' , ()=>{
-    console.log('user disconected')
-  })
+io.on('connection', (socket) => {
+  console.log('A user connected');
 
+  socket.on('data', (data) => {  
+    socket.broadcast.emit('data', data);
+  });
 
-  socket.on('data' , data=>{
-    console.log(data)
-    socket.emit('data' , data)
-  })
-})
-
+  socket.on('disconnect', () => {
+    console.log('A user disconnected');
+  });
+});
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended : true}));
