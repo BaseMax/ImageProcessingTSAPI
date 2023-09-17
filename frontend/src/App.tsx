@@ -1,30 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef, useEffect } from 'react';
 import './App.css';
-import { VideoCapture } from './components/camera';
 import io from 'socket.io-client';
+import ReactWebcam from 'react-webcam';
 
+const socket = io('http://localhost:3001');
 
-function App() {
+const App: React.FC = () => {
+  const webcamRef = useRef<ReactWebcam | null>(null);
+  
+  useEffect(() => {
+    const captureAndSend = () => {
+      if (webcamRef.current) {
+        const imageSrc = webcamRef.current.getScreenshot();
+        socket.emit('data', imageSrc);
+      }
+    };
+
+    const interval = setInterval(captureAndSend, 1000); // Adjust the interval as needed
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [socket]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <VideoCapture />
-      </header>
+    <div>
+      <ReactWebcam ref={webcamRef} />
     </div>
   );
-}
-
-export default App;
+};
+export default App ;
