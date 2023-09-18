@@ -1,5 +1,0 @@
-{
-    "watch": ["src", ".env"],
-    "ext": "js,ts,json",
-    "exec": "clear & ts-node  --transpile-only src/app.ts"
-}
