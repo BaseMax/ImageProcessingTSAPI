@@ -25,6 +25,7 @@ app.use(morgan('tiny'));
 app.use(helmet());
 app.use(cors());
 app.use(passport.initialize())
+app.get('/' , (req,res)=>res.sendStatus(200))
 app.use(mianRouter);
 
 
@@ -35,4 +36,4 @@ server.listen(port , async ()=>{
 })
 
 
-export {server}
+export {server , app}
