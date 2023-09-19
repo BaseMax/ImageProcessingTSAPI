@@ -1,0 +1,25 @@
+POST  http://localhost:3001/auth/register/
+content-type: application/json
+
+{
+  "firstName" : "test" , 
+  "lastName" : "test" ,
+  "email" : "test@gmail.com",
+  "username" : "test" ,
+  "password" : "123456"
+}
+
+
+POST  http://localhost:3001/auth/login/
+content-type: application/json
+
+{
+  "username" : "test" ,
+  "password" : "123456"
+}
+
+
+POST  http://localhost:3001/auth/login/
+Content-Disposition: form-data; name="text"
+
+# Include your file
