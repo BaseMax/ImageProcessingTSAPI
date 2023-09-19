@@ -9,6 +9,25 @@ Before you begin, ensure you have met the following requirements:
 - Node.js and npm installed on your system.
 - Git for cloning the repository.
 
+
+## Demo 
+
+! [demo](./public/output/output_1695062583615.jpg)
+! [demo](./public/1695062561604-12282911.jpg)
+
+
+![demo](./public/output/output_1695063578756.jpg)
+![demo](./public/1695063557080-43682558.jpg)
+
+
+![demo](./public/output/output_1695130773962.jpg)
+![demo](./public/1695130752241-134239475.jpg)
+
+
+
+
+
+
 ## Getting Started
 
 Clone the repository:
@@ -30,8 +49,8 @@ Create a `.env` file in the project root and set the following environment varia
 
 ```env
 PORT=3000               # Port for the Express server
-DB_CONNECTION_STRING=   # MongoDB connection string
-JWT_SECRET=             # Secret for JWT token generation
+MONGODB_URI=   # MongoDB connection string
+JWT_SECRET_KEY=             # Secret for JWT token generation
 ```
 
 ## Usage
@@ -76,7 +95,7 @@ The API will return information about detected faces and their emotional states.
 
 **Image Processing:**
 
-- POST /api/upload/image - Upload an image for face detection and emotion analysis.
+- POST /api/face/detect - Upload an image for face detection and emotion analysis.
 
 ## Example
 
@@ -135,7 +154,7 @@ Here's an example of the response you can expect from the API after uploading an
 Here's an example of how to make a POST request to the API to upload an image and receive face detection results using a JavaScript fetch:
 
 ```javascript
-const apiUrl = 'http://your-api-url/api/upload/image';
+const apiUrl = 'http://your-api-url/api/face/detect';
 
 // Replace 'your-api-key' with a valid API key.
 const apiKey = 'your-api-key';

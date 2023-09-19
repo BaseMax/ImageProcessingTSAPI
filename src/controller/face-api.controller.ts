@@ -4,6 +4,7 @@ import path from 'path';
 import { Request, Response, Router } from "express";
 import * as faceapi from 'face-api.js';
 import sizeOf, { imageSize } from 'image-size';
+import { StatusResult } from '../utils/status-result/status-result';
 
 
 const minConfidence = 0.5;
@@ -31,6 +32,7 @@ const detect =async (req:Request , res:Response) => {
     const imageSize = sizeOf(file);  
     const resize =  {width : imageSize.width , height :imageSize.height};
     const image = await canvas.loadImage(file)
+
     try {
       const detections = await faceapi.detectAllFaces(image, faceDetectionOptions)
         .withFaceLandmarks()
@@ -49,29 +51,29 @@ const detect =async (req:Request , res:Response) => {
         drawBox.draw(output)
       })
       
-      const result = (output as any).toBuffer('image/jpeg')
+      const result = (output as any).toBuffer('image/jpeg');
       const directory = path.join(__dirname, '../../', `public/output/output_${Date.now()}.jpg`)
   
       fs.writeFileSync(
         directory ,
         result
       );
-  
-      res.status(201)
-        .json({
-          url : 
-        })
+
+      const replaceDir = directory.replace(__dirname , '')
+
+      console.log(replaceDir)
+
+      StatusResult(res , 200 , {
+        messgae : 'Image processed successfully',
+
+      })
     } catch (error) {
       res.send(error)
     }
 }
 
 
-const detectVideo =async (req:Request,res:Response) => {
-
-}
 
 export {
     detect ,
-    detectVideo , 
 }
