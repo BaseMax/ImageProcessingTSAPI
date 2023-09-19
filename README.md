@@ -12,6 +12,9 @@ Before you begin, ensure you have met the following requirements:
 
 ## Demo 
 
+
+### Face datection :
+
 ![demo](./public/output/output_1695062583615.jpg)
 ![demo](./public/1695062561604-12282911.jpg)
 
@@ -26,6 +29,17 @@ Before you begin, ensure you have met the following requirements:
 ![demo](./public/1695130752241-134239475.jpg)
 
 
+
+### APIs 
+
+register :
+
+![demo](./screenshots/register.png)
+
+
+login : 
+
+![demo](./screenshots/login.png)
 
 
 
