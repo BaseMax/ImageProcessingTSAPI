@@ -12,12 +12,14 @@ Before you begin, ensure you have met the following requirements:
 
 ## Demo 
 
-! [demo](./public/output/output_1695062583615.jpg)
-! [demo](./public/1695062561604-12282911.jpg)
+![demo](./public/output/output_1695062583615.jpg)
+![demo](./public/1695062561604-12282911.jpg)
+
 
 
 ![demo](./public/output/output_1695063578756.jpg)
 ![demo](./public/1695063557080-43682558.jpg)
+
 
 
 ![demo](./public/output/output_1695130773962.jpg)
