@@ -59,6 +59,14 @@ Install dependencies:
 npm install
 ```
 
+
+Run app:
+
+```bash
+npm run start:dev
+```
+
+
 ## Configuration
 
 Create a `.env` file in the project root and set the following environment variables:
