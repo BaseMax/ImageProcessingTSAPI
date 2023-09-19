@@ -4,13 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client": "cd ../frontend && npm start",
-    "dev": "concurrently \"npm run start:dev\" \"npm run client\"",
     "build": "tsc",
     "start": "nodemon dist/app.js",
     "start:dev": "nodemon",
     "start:prod": "node dist/app.js",
-    "test:e2e": "echo no registerd"
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +18,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
     "@types/helmet": "^4.0.0",
+    "@types/jest": "^29.5.5",
     "@types/jsonwebtoken": "^9.0.3",
     "@types/lodash": "^4.14.198",
     "@types/mongoose": "^5.11.97",
@@ -29,7 +28,9 @@
     "@types/passport": "^1.0.12",
     "@types/passport-jwt": "^3.0.9",
     "@types/socket.io": "^3.0.2",
+    "@types/supertest": "^2.0.12",
     "nodemon": "^3.0.1",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
@@ -44,6 +45,7 @@
     "face-api.js": "^0.22.2",
     "helmet": "^7.0.0",
     "image-size": "^1.0.2",
+    "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "mongoose": "^7.5.2",
@@ -51,6 +53,7 @@
     "multer": "^1.4.5-lts.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "supertest": "^6.3.3"
   }
 }
