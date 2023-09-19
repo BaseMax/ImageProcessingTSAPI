@@ -1,4 +1,5 @@
-import { Schema } from 'mongoose'
+import { genSalt, genSaltSync, hashSync } from 'bcrypt';
+import { Schema, model } from 'mongoose'
 
 interface IUser {
     _id : Schema.Types.ObjectId ;
@@ -17,3 +18,19 @@ const userSchema = new Schema<IUser>({
     password : {type : String ,  required : true}
 })
 
+
+userSchema.pre('save' , function(next){
+    if(!this.isModified('password')){
+        return next()
+    }
+
+    const salt = genSaltSync(12);
+    this.password = hashSync(this.password , salt);
+    next()
+})
+
+
+
+const User = model<IUser>('User' , userSchema);
+
+export {User , IUser};
