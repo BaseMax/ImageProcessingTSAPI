@@ -1,11 +1,11 @@
 import { Router } from "express";
-import passport from "passport";
 import { profile } from "../controller/user.controller";
+import { auth } from "../middlewares/auth";
 
 const router = Router()
 
 
-router.use(passport.authenticate('jwt' , {session : false}));
+router.use(auth);
 router.get('/me' , profile);
 
 
