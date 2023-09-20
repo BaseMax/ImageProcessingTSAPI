@@ -10,8 +10,9 @@ const ops = {
 passport.use(new Strategy(ops , async (payload , done)=>{
     const user = await User.findById(payload.sub)
     
-    
-    if(user){
-        return done(false , user);
+    if(!user){
+        return done(new Error('User is invalid') , false , {message: 'Unauthorized'});
     }
+
+    return done(null , user);
 }))
