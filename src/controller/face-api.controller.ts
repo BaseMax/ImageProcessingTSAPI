@@ -27,7 +27,12 @@ Promise.all([
    faceapi.nets.faceExpressionNet.loadFromDisk(modelPath)
 ]).then()
 
-const detect =async (req:Request , res:Response) => {
+const detect = async (req:Request , res:Response) => {
+
+    if(!req.file){
+      return StatusResult(res , 400 , {message : 'Invalid file'})
+    }
+
     const file = req.file.path
     const imageSize = sizeOf(file);  
     const resize =  {width : imageSize.width , height :imageSize.height};
@@ -52,23 +57,21 @@ const detect =async (req:Request , res:Response) => {
       })
       
       const result = (output as any).toBuffer('image/jpeg');
-      const directory = path.join(__dirname, '../../', `public/output/output_${Date.now()}.jpg`)
+      const fileAddress = `public/output/output_${Date.now()}.jpg`
+      const directory = path.join(__dirname, '../../', fileAddress)
   
       fs.writeFileSync(
         directory ,
         result
       );
 
-      const replaceDir = directory.replace(__dirname , '')
-
-      console.log(replaceDir)
-
-      StatusResult(res , 200 , {
-        messgae : 'Image processed successfully',
-
+      res.send({
+        address : fileAddress,
+        message : 'process image successfully',
+        success : true ,
       })
     } catch (error) {
-      res.send(error)
+      res.status(400).send({error})
     }
 }
 
