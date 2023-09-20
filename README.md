@@ -15,18 +15,27 @@ Before you begin, ensure you have met the following requirements:
 
 ### Face datection :
 
-![demo](./public/output/output_1695062583615.jpg)
 ![demo](./public/1695062561604-12282911.jpg)
+![demo](./public/output/output_1695062583615.jpg)
 
 
 
-![demo](./public/output/output_1695063578756.jpg)
 ![demo](./public/1695063557080-43682558.jpg)
+![demo](./public/output/output_1695063578756.jpg)
 
 
 
-![demo](./public/output/output_1695130773962.jpg)
-![demo](./public/1695130752241-134239475.jpg)
+![demo](./public/1695243239709-890003583.jpg)
+![demo](./public/output/output_1695243264275.jpg)
+
+
+
+![demo](./public/1695243641130-501222217.jpg)
+![demo](./public/output/output_1695243663953.jpg)
+
+
+
+
 
 
 
