@@ -9,49 +9,31 @@ Before you begin, ensure you have met the following requirements:
 - Node.js and npm installed on your system.
 - Git for cloning the repository.
 
-
 ## Demo 
 
-
-### Face datection :
+### Face datection:
 
 ![demo](./public/1695062561604-12282911.jpg)
 ![demo](./public/output/output_1695062583615.jpg)
 
-
-
 ![demo](./public/1695063557080-43682558.jpg)
 ![demo](./public/output/output_1695063578756.jpg)
-
-
 
 ![demo](./public/1695243239709-890003583.jpg)
 ![demo](./public/output/output_1695243264275.jpg)
 
-
-
 ![demo](./public/1695243641130-501222217.jpg)
 ![demo](./public/output/output_1695243663953.jpg)
 
-
-
-
-
-
-
 ### APIs 
 
-register :
+Register:
 
 ![demo](./screenshots/register.png)
 
-
-login : 
+Login:
 
 ![demo](./screenshots/login.png)
-
-
-
 
 ## Getting Started
 
@@ -68,13 +50,11 @@ Install dependencies:
 npm install
 ```
 
-
 Run app:
 
 ```bash
 npm run start:dev
 ```
-
 
 ## Configuration
 
