@@ -19,7 +19,7 @@ content-type: application/json
 }
 
 
-POST  http://localhost:3001/auth/login/
+POST  http://localhost:3001/face/detect/
 Content-Disposition: form-data; name="text"
 
 # Include your file
