@@ -40,7 +40,7 @@
     "concurrently": "^8.2.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2",
+    "express": "^5.2.1",
     "express-validator": "^7.0.1",
     "face-api.js": "^0.22.2",
     "helmet": "^7.0.0",
