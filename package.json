@@ -44,7 +44,7 @@
     "express-validator": "^7.0.1",
     "face-api.js": "^0.22.2",
     "helmet": "^7.0.0",
-    "image-size": "^1.0.2",
+    "image-size": "^2.0.3",
     "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
